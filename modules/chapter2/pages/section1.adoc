@@ -1,3 +1,27 @@
 = Guided solution (page 1 of 2)
 
-FIXME: Provide step-by-step instructions here to resolve the issue.
+*ISSUE 1* `# subscription-manager repos` fails with: +
+Repositories disabled by configuration. +
+*FIX* Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 .
+
+*ISSUE 2* `# leapp preupgrade` fails with: 
+----
+[ERROR] Actor: target_userspace_creator 
+Message: Unable to install RHEL 9 userspace packages. 
+----
+*FIX* Sync and add the 9.x minor appstream and baseos repos to the content view.
+
+*ISSUE 3* `# leapp preupgrade` now fails with: 
+----
+OSError: [Errno 24] Too many open files 
+sqlite3.OperationalError: unable to open database file 
+----
+*FIX* Run the below command to set the ulimit. +
+`# ulimit -n 16384`
+
+*ISSUE 4* `# leapp upgrade` fails with: 
+----
+file /usr/lib64/engines-3/afalg.so from install of openssl-libs-1:3.0.7-28.el9_4.x86_64 conflicts with file from package openssl3-libs-3.2.2-2.1.el8.x86_64
+----
+*FIX* The `openssl3-libs-3.2.2-2.1.el8.x86_64` rpm is installed from EPEL repo and hence needs to be removed to fix this error. +
+`# yum remove openssl3-libs-3.2.2-2.1.el8.x86_64`
