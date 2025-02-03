@@ -131,12 +131,14 @@
 <article class="doc">
 <h1 class="page">Guided solution (page 1 of 2)</h1>
 <div class="paragraph">
-<p><strong>ISSUE 1</strong> <code># subscription-manager repos</code> fails with:<br>
+<p>Try to list the available repos on the client and it fails with:<br>
+<strong>ISSUE 1</strong> <code># subscription-manager repos</code> fails with:<br>
 Repositories disabled by configuration.<br>
 <strong>FIX</strong> Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 .</p>
 </div>
 <div class="paragraph">
-<p><strong>ISSUE 2</strong> <code># leapp preupgrade</code> fails with:</p>
+<p>Install the leapp uitlity via <code># dnf install leapp-upgrade</code>  and then run <code># leapp preupgrade</code><br>
+<strong>ISSUE 2</strong> <code># leapp preupgrade</code> fails with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -161,7 +163,8 @@ sqlite3.OperationalError: unable to open database file</pre>
 <code># ulimit -n 16384</code></p>
 </div>
 <div class="paragraph">
-<p><strong>ISSUE 4</strong> <code># leapp upgrade</code> fails with:</p>
+<p>Once the <code>leapp preupgrade</code> completes with 0 errors and 0 inhibitors , run the <code># leapp upgrade</code><br>
+<strong>ISSUE 4</strong> <code># leapp upgrade</code> fails with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
