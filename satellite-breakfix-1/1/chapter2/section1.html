@@ -134,7 +134,8 @@
 <p>Try to list the available repos on the client and it fails with:<br>
 <strong>ISSUE 1</strong> <code># subscription-manager repos</code> fails with:<br>
 Repositories disabled by configuration.<br>
-<strong>FIX</strong> Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 .</p>
+<strong>FIX</strong> Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 .<br>
+<code># subscription-manager refresh</code></p>
 </div>
 <div class="paragraph">
 <p>Install the leapp uitlity via <code># dnf install leapp-upgrade</code>  and then run <code># leapp preupgrade</code><br>
@@ -147,7 +148,26 @@ Message: Unable to install RHEL 9 userspace packages.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>FIX</strong> Sync and add the 9.x minor appstream and baseos repos to the content view.</p>
+<p><strong>FIX</strong> Sync and add the 9.x minor appstream and baseos repos to the content view.<br>
+Go to Satellite web ui &#8594; Content &#8594; Red Hat Repositories<br>
+Search with <code>rhel-9-for-x86_64-baseos-rpms</code> and enable baseos for 9.4 minor version or the supported minor version as per this <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9" target="_blank" rel="noopener">doc</a>.<br>
+Click on the + beside 9.4 to enable it.
+Go to Content &#8594; Sync Status &#8594; Expand all<br>
+Click on the checkbox for baseos for 9.4 and hit <code>Synchronize Now</code> at the bottom.</p>
+</div>
+<div class="paragraph">
+<p>Perform the same steps for appstream as well.<br>
+Go to Satellite web ui &#8594; Content &#8594; Red Hat Repositories<br>
+Search with <code>rhel-9-for-x86_64-appstream-rpms</code> and enable appstream for 9.4 minor version or the supported minor version as per this <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9" target="_blank" rel="noopener">doc</a>.<br>
+Click on the + beside 9.4 to enable it.<br>
+Go to Content &#8594; Sync Status &#8594; Expand available<br>
+Click on the checkbox for appstream for 9.4 and hit <code>Synchronize Now</code> at the bottom.</p>
+</div>
+<div class="paragraph">
+<p>Now add there 2 repos to the content view:<br>
+Content &#8594; LifeCycle  &#8594; Content Views<br>
+Click on <code>leapp_8to9</code> and then on Repositories<br>
+Add the 2 repos [baseos and appstream for 9.4] and then <code>Publish</code> a new version of this content view.</p>
 </div>
 <div class="paragraph">
 <p><strong>ISSUE 3</strong> <code># leapp preupgrade</code> now fails with:</p>
