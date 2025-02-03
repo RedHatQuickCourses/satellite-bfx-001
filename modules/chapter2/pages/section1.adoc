@@ -3,7 +3,8 @@
 Try to list the available repos on the client and it fails with: +
 *ISSUE 1* `# subscription-manager repos` fails with: +
 Repositories disabled by configuration. +
-*FIX* Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 .
+*FIX* Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 . +
+`# subscription-manager refresh`
 
 Install the leapp uitlity via `# dnf install leapp-upgrade`  and then run `# leapp preupgrade` +
 *ISSUE 2* `# leapp preupgrade` fails with: 
@@ -11,7 +12,24 @@ Install the leapp uitlity via `# dnf install leapp-upgrade`  and then run `# lea
 [ERROR] Actor: target_userspace_creator 
 Message: Unable to install RHEL 9 userspace packages. 
 ----
-*FIX* Sync and add the 9.x minor appstream and baseos repos to the content view.
+*FIX* Sync and add the 9.x minor appstream and baseos repos to the content view. +
+Go to Satellite web ui -> Content -> Red Hat Repositories +
+Search with `rhel-9-for-x86_64-baseos-rpms` and enable baseos for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]. +
+Click on the + beside 9.4 to enable it.
+Go to Content -> Sync Status -> Expand all +
+Click on the checkbox for baseos for 9.4 and hit `Synchronize Now` at the bottom.
+
+Perform the same steps for appstream as well. +
+Go to Satellite web ui -> Content -> Red Hat Repositories +
+Search with `rhel-9-for-x86_64-appstream-rpms` and enable appstream for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]. +
+Click on the + beside 9.4 to enable it. +
+Go to Content -> Sync Status -> Expand available +
+Click on the checkbox for appstream for 9.4 and hit `Synchronize Now` at the bottom.
+
+Now add there 2 repos to the content view: +
+Content -> LifeCycle  -> Content Views +
+Click on `leapp_8to9` and then on Repositories +
+Add the 2 repos [baseos and appstream for 9.4] and then `Publish` a new version of this content view.
 
 *ISSUE 3* `# leapp preupgrade` now fails with: 
 ----
