@@ -1,48 +1,108 @@
-= Guided solution (page 1 of 2)
+= Guided Solution
 
-Try to list the available repos on the client and it fails with: +
-*ISSUE 1* `# subscription-manager repos` fails with: +
-Repositories disabled by configuration. +
-*FIX* Change the value of manage_repos in /etc/rhsm/rhsm.conf to 1 instead of 0 . +
-`# subscription-manager refresh`
+== Objectives
 
-Install the leapp uitlity via `# dnf install leapp-upgrade`  and then run `# leapp preupgrade` +
-*ISSUE 2* `# leapp preupgrade` fails with: 
+* Investigate why the RHEL 8 server upgrade to RHEL 9 via Leapp is failing in Red Hat Satellite 6.
+* Solve the upgrade issue in the hands-on lab environment.
+
+== Instructions
+
+. Try to list the available repos on the client and it fails with:
++
+[source,bash,role=execute]
 ----
-[ERROR] Actor: target_userspace_creator 
-Message: Unable to install RHEL 9 userspace packages. 
+subscription-manager repos
 ----
-*FIX* Sync and add the 9.x minor appstream and baseos repos to the content view. +
-Go to Satellite web ui -> Content -> Red Hat Repositories +
-Search with `rhel-9-for-x86_64-baseos-rpms` and enable baseos for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]. +
-Click on the + beside 9.4 to enable it.
-Go to Content -> Sync Status -> Expand all +
-Click on the checkbox for baseos for 9.4 and hit `Synchronize Now` at the bottom.
-
-Perform the same steps for appstream as well. +
-Go to Satellite web ui -> Content -> Red Hat Repositories +
-Search with `rhel-9-for-x86_64-appstream-rpms` and enable appstream for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]. +
-Click on the + beside 9.4 to enable it. +
-Go to Content -> Sync Status -> Expand available +
-Click on the checkbox for appstream for 9.4 and hit `Synchronize Now` at the bottom.
-
-Now add there 2 repos to the content view: +
-Content -> LifeCycle  -> Content Views +
-Click on `leapp_8to9` and then on Repositories +
-Add the 2 repos [baseos and appstream for 9.4] and then `Publish` a new version of this content view.
-
-*ISSUE 3* `# leapp preupgrade` now fails with: 
++
+.Sample output:
 ----
-OSError: [Errno 24] Too many open files 
-sqlite3.OperationalError: unable to open database file 
+Repositories disabled by configuration.
 ----
-*FIX* Run the below command to set the ulimit. +
-`# ulimit -n 16384`
 
-Once the `leapp preupgrade` completes with 0 errors and 0 inhibitors , run the `# leapp upgrade` +
-*ISSUE 4* `# leapp upgrade` fails with: 
+. Change the value of `manage_repos` in `/etc/rhsm/rhsm.conf` to `1` instead of `0`.
++
+[source,bash,role=execute]
+----
+subscription-manager refresh
+----
+
+. Install the leapp utility via `dnf install leapp-upgrade` and then run `leapp preupgrade`.
++
+[source,bash,role=execute]
+----
+dnf install leapp-upgrade
+leapp preupgrade
+----
++
+.Sample output:
+----
+[ERROR] Actor: target_userspace_creator
+Message: Unable to install RHEL 9 userspace packages.
+----
+
+. Sync and add the 9.x minor appstream and baseos repos to the content view:
+.. Go to Satellite web ui -> Content -> Red Hat Repositories
+.. Search with `rhel-9-for-x86_64-baseos-rpms` and enable baseos for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank].
+.. Click on the + beside 9.4 to enable it.
+.. Go to Content -> Sync Status -> Expand all
+.. Click on the checkbox for baseos for 9.4 and hit `Synchronize Now` at the bottom.
+
+. Perform the same steps for appstream as well:
+.. Go to Satellite web ui -> Content -> Red Hat Repositories
+.. Search with `rhel-9-for-x86_64-appstream-rpms` and enable appstream for 9.4 minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank].
+.. Click on the + beside 9.4 to enable it.
+.. Go to Content -> Sync Status -> Expand available
+.. Click on the checkbox for appstream for 9.4 and hit `Synchronize Now` at the bottom.
+
+. Now add there 2 repos to the content view:
+.. Content -> LifeCycle  -> Content Views
+.. Click on `leapp_8to9` and then on Repositories
+.. Add the 2 repos [baseos and appstream for 9.4] and then `Publish` a new version of this content view.
+
+. `leapp preupgrade` now fails with
++
+[source,bash,role=execute]
+----
+leapp preupgrade
+----
++
+.Sample output:
+----
+OSError: [Errno 24] Too many open files
+sqlite3.OperationalError: unable to open database file
+----
+
+. Run the below command to set the ulimit.
++
+[source,bash,role=execute]
+----
+ulimit -n 16384
+----
+
+. Once the `leapp preupgrade` completes with `0` errors and `0` inhibitors , run the `leapp upgrade`
++
+[source,bash,role=execute]
+----
+leapp upgrade
+----
++
+.Sample output:
 ----
 file /usr/lib64/engines-3/afalg.so from install of openssl-libs-1:3.0.7-28.el9_4.x86_64 conflicts with file from package openssl3-libs-3.2.2-2.1.el8.x86_64
 ----
-*FIX* The `openssl3-libs-3.2.2-2.1.el8.x86_64` rpm is installed from EPEL repo and hence needs to be removed to fix this error. +
-`# yum remove openssl3-libs-3.2.2-2.1.el8.x86_64`
+
+. The `openssl3-libs-3.2.2-2.1.el8.x86_64` rpm is installed from EPEL repo and hence needs to be removed to fix this error.
++
+[source,bash,role=execute]
+----
+yum remove openssl3-libs-3.2.2-2.1.el8.x86_64
+----
+
+. Run the `leapp upgrade`.
++
+[source,bash,role=execute]
+----
+leapp upgrade
+----
+
+. Once `leapp upgrade` is successful and it asks for reboot, reboot the system and confirm that the server is now booted with RHEL9 kernel.

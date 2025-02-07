@@ -1,5 +1,5 @@
 site:
-  title: Red Hat Satellite Break-fix Practice 1
+  title: "Break-fix Practice: Leapp Upgrade with Satellite 6"
   start_page: satellite-breakfix-1::index.adoc
 
 content:
