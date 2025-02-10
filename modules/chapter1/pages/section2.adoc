@@ -6,16 +6,16 @@
 
 == Check your work using the grading script
 
-After you have resolved the issue and met the success criteria, login to `FIXME` system as `FIXME` user and run the grading script as shown here to check your work:
+After you have resolved the issue and met the success criteria, login to `bastion` system as `FIXME` user and run the grading script as shown here to check your work:
 
 [source,bash,role=execute]
 ----
-break-fix-script grade
+lab grade grade0
 ----
 
 .Sample output
 ----
-[root@classroom ~]# break-fix-script grade
+[lab-user@bastion ~]$ lab grade grade0
 Initiating break-fix-script with option grade
 Grading.  Please wait.
 Success.
