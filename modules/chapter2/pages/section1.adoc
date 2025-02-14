@@ -69,29 +69,40 @@ Message: Unable to install RHEL 9 userspace packages.
 .. Navigate to `Content` select menu:Content[Red Hat Repositories].
 .. Search with `rhel-9-for-x86_64-baseos-rpms` and click btn:[rhel-9-for-x86_64-baseos-rpms] to view drop down options.
 .. Click on the btn:[+] beside `x86_64 9.4` to enable `baseos` for `9.4` minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]
-.. Navigate to `Content` select menu:Content[Sync Status] and click btn:[Expand all].
-.. Click on the checkbox for `baseos` for `9.4` and click btn:[Synchronize Now] at the bottom.
++
+image::baseos94.png[baseos94,100%,100%,link=self,window=_blank]
+ Tip: click on the image to open in a new tab for better visibility
 
-#Add screenshots wherever possible.
+
 
 . Perform the previous steps for `appstream` as well:
 .. Login to satellite web console.
 .. Navigate to `Content` select menu:Content[Red Hat Repositories].
 .. Search with `rhel-9-for-x86_64-appstream-rpms` and click btn:[rhel-9-for-x86_64-appstream-rpms] to view drop down options.
 .. Click on the btn:[+] beside `x86_64 9.4` to enable `appstream` for `9.4` minor version or the supported minor version as per this https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9[doc,window=_blank]
-.. Navigate to `Content` select menu:Content[Sync Status] and click btn:[Expand all].
-.. Click on the checkbox for `appstream` for `9.4` and click btn:[Synchronize Now] at the bottom.
++
+image::appstream94.png[appstream94,100%,100%,link=self,window=_blank]
+ Tip: click on the image to open in a new tab for better visibility
+ .. Navigate to `Content` select menu:Content[Sync Status] and click btn:[Expand all].
+.. Click on the checkbox for `appstream` and `baseos` for `9.4` and click btn:[Synchronize Now] at the bottom.
++
+image::sync.png[sync,100%,100%,link=self,window=_blank]
+ Tip: click on the image to open in a new tab for better visibility
 
-#Add screenshots wherever possible.
 
 . Now add `baseos` and `appstream` for `9.4` repos to the content view:
 .. menu:Content[LifeCycle > Content Views]
 .. Click on btn:[leapp_8to9] content view and then navigate to `Repositories` tab.
 .. Select the `Status` filter as `Not added`.
 .. Select the `Red Hat Enterprise Linux 9 for x86_64 - AppStream RPMs 9.4` and `Red Hat Enterprise Linux 9 for x86_64 - BaseOS RPMs 9.4` repos and then click btn:[Add repositories]
-.. Click btn:[Publish new version] a new version of this content view.
++
+image::addpublish.png[addpublish,100%,100%,link=self,window=_blank]
+ Tip: click on the image to open in a new tab for better visibility
+.. Click btn:[Publish new version] and then btn:[Next] and btn:[Finish] to publish a new version of this content view.
++
+image::publish.png[publish,100%,100%,link=self,window=_blank]
+ Tip: click on the image to open in a new tab for better visibility
 
-#Add screenshots wherever possible.
 
 . Run `leapp preupgrade` now.
 +
