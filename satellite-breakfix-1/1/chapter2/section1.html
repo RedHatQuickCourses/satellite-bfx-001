@@ -228,23 +228,20 @@ Message: Unable to install RHEL 9 userspace packages.
 </li>
 <li>
 <p>Click on the <b class="button">+</b> beside <code>x86_64 9.4</code> to enable <code>baseos</code> for <code>9.4</code> minor version or the supported minor version as per this <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9" target="_blank" rel="noopener">doc</a></p>
-</li>
-<li>
-<p>Navigate to <code>Content</code> select <span class="menuseq"><b class="menu">Content</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Sync Status</b></span> and click <b class="button">Expand all</b>.</p>
-</li>
-<li>
-<p>Click on the checkbox for <code>baseos</code> for <code>9.4</code> and click <b class="button">Synchronize Now</b> at the bottom.</p>
-</li>
-</ol>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/baseos94.png" target="_blank" rel="noopener"><img src="_images/baseos94.png" alt="baseos94" width="100%" height="100%"></a>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tip: click on the image to open in a new tab for better visibility</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>#Add screenshots wherever possible.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Perform the previous steps for <code>appstream</code> as well:</p>
 <div class="olist loweralpha">
@@ -260,23 +257,36 @@ Message: Unable to install RHEL 9 userspace packages.
 </li>
 <li>
 <p>Click on the <b class="button">+</b> beside <code>x86_64 9.4</code> to enable <code>appstream</code> for <code>9.4</code> minor version or the supported minor version as per this <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/upgrading_from_rhel_8_to_rhel_9/index#con_supported-upgrade-paths_upgrading-from-rhel-8-to-rhel-9" target="_blank" rel="noopener">doc</a></p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/appstream94.png" target="_blank" rel="noopener"><img src="_images/appstream94.png" alt="appstream94" width="100%" height="100%"></a>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tip: click on the image to open in a new tab for better visibility</pre>
+</div>
+</div>
 </li>
 <li>
 <p>Navigate to <code>Content</code> select <span class="menuseq"><b class="menu">Content</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Sync Status</b></span> and click <b class="button">Expand all</b>.</p>
 </li>
 <li>
-<p>Click on the checkbox for <code>appstream</code> for <code>9.4</code> and click <b class="button">Synchronize Now</b> at the bottom.</p>
-</li>
-</ol>
+<p>Click on the checkbox for <code>appstream</code> and <code>baseos</code> for <code>9.4</code> and click <b class="button">Synchronize Now</b> at the bottom.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/sync.png" target="_blank" rel="noopener"><img src="_images/sync.png" alt="sync" width="100%" height="100%"></a>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tip: click on the image to open in a new tab for better visibility</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>#Add screenshots wherever possible.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Now add <code>baseos</code> and <code>appstream</code> for <code>9.4</code> repos to the content view:</p>
 <div class="olist loweralpha">
@@ -292,20 +302,33 @@ Message: Unable to install RHEL 9 userspace packages.
 </li>
 <li>
 <p>Select the <code>Red Hat Enterprise Linux 9 for x86_64 - AppStream RPMs 9.4</code> and <code>Red Hat Enterprise Linux 9 for x86_64 - BaseOS RPMs 9.4</code> repos and then click <b class="button">Add repositories</b></p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/addpublish.png" target="_blank" rel="noopener"><img src="_images/addpublish.png" alt="addpublish" width="100%" height="100%"></a>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tip: click on the image to open in a new tab for better visibility</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Click <b class="button">Publish new version</b> a new version of this content view.</p>
-</li>
-</ol>
+<p>Click <b class="button">Publish new version</b> and then <b class="button">Next</b> and <b class="button">Finish</b> to publish a new version of this content view.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/publish.png" target="_blank" rel="noopener"><img src="_images/publish.png" alt="publish" width="100%" height="100%"></a>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tip: click on the image to open in a new tab for better visibility</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>#Add screenshots wherever possible.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Run <code>leapp preupgrade</code> now.</p>
 <div class="listingblock execute">
