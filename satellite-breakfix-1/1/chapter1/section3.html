@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Break-fix Scenario :: Break-fix Practice: Leapp Upgrade with Satellite 6</title>
-    <link rel="prev" href="section1.html">
-    <link rel="next" href="section3.html">
+    <title>Check your work :: Break-fix Practice: Leapp Upgrade with Satellite 6</title>
+    <link rel="prev" href="section2.html">
+    <link rel="next" href="../chapter2/index.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script>var uiRootPath = '../../../_'</script>
@@ -60,10 +60,10 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="section1.html">Break-fix activity</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="section2.html">Break-fix Scenario</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="section3.html">Check your work</a>
   </li>
 </ul>
@@ -120,7 +120,7 @@
   <ul>
     <li><a href="../index.html">Break-fix Practice: Leapp Upgrade with Satellite 6</a></li>
     <li><a href="index.html">What’s in this break-fix?</a></li>
-    <li><a href="section2.html">Break-fix Scenario</a></li>
+    <li><a href="section3.html">Check your work</a></li>
   </ul>
 </nav>
 </div>
@@ -129,26 +129,29 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Break-fix Scenario</h1>
-<div id="preamble">
+<h1 class="page">Check your work</h1>
+<div class="sect1">
+<h2 id="_check_your_work_using_the_grading_script"><a class="anchor" href="#_check_your_work_using_the_grading_script"></a>Check your work using the grading script</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A RHEL 8 server <code>rhel81</code> is registered to the satellite server and needs to be upgraded to RHEL 9 via Leapp.
-But errors in <code>leapp preupgrade</code> and <code>leapp upgrade</code> need to be resolved before a successful upgrade to RHEL 9.
-Your job is to investigate the issue and ensure RHEL 8 server is upgraded to RHEL 9.</p>
+<p>After you have resolved the issue and met the success criteria, login to <code>bastion</code> system as <code>lab-user</code> user and run the grading script as shown here to check your work:</p>
 </div>
-<div class="paragraph">
-<p>Here is error the message:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">lab grade grade0</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Sample output</div>
 <div class="content">
-<pre>[root@rhel81 ~]# leapp preupgrade
+<pre>[lab-user@bastion ~]$ lab grade grade0
+Initiating /usr/local/bin/lab with option(s) grade grade0
 ...
 ...
-2025-02-10 10:57:15.999198 [ERROR] Actor: target_userspace_creator
-Message: Unable to install RHEL 9 userspace packages.
-...
+TASK [Detecting result] *********************************************************************************************************************************************************************************************************************
+ok: [rhel81] =&gt; {
+    "msg": "Success. your alphanumeric code for completion is XXXXX"
+}
 ...
 ...</pre>
 </div>
@@ -156,39 +159,8 @@ Message: Unable to install RHEL 9 userspace packages.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_objectives"><a class="anchor" href="#_objectives"></a>Objectives</h2>
+<h2 id="_submit_the_completion_code"><a class="anchor" href="#_submit_the_completion_code"></a>Submit the completion code</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Investigate why the RHEL 8 server upgrade to RHEL 9 via Leapp is failing in Red Hat Satellite 6.</p>
-</li>
-<li>
-<p>Solve the upgrade issue in the hands-on lab environment.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_recreate_scenario"><a class="anchor" href="#_recreate_scenario"></a>Recreate Scenario</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To recreate this scenario, run the <code>lab</code> script on <code>bastion</code> server.</p>
-</div>
-<div class="listingblock execute">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">lab break breakfix0</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Sample output</div>
-<div class="content">
-<pre>[lab-user@bastion ~]$ lab break breakfix0
-Initiating /usr/local/bin/lab with option(s) break breakfix0
-Completed /usr/local/bin/lab with option(s) break breakfix0 successfully</pre>
-</div>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -196,43 +168,29 @@ Completed /usr/local/bin/lab with option(s) break breakfix0 successfully</pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It may take 2-3 minutes to complete.
+Skip this if not applicable for you.
 </td>
 </tr>
 </table>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>For RedHat internal audience: Submit that completion code <a href="https://link-to-appropriate-lms.com" target="_blank" rel="noopener">here</a> to receive a grade for this training</p>
+</li>
+<li>
+<p>For RedHat partners: Submit that completion code <a href="https://link-to-appropriate-lms.com" target="_blank" rel="noopener">here</a> to receive a grade for this training</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_success_criteria"><a class="anchor" href="#_success_criteria"></a>Success Criteria</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Ensure the <code>leapp upgrade</code> command results in success and <code>rhel81</code> server is upgraded to RHEL 9.</p>
-</div>
-<div class="listingblock execute">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">leapp upgrade</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Sample output:</div>
-<div class="content">
-<pre>...
-...
-
-Complete!
-====&gt; * add_upgrade_boot_entry
-        Add new boot entry for Leapp provided initramfs.
-A reboot is required to continue. Please reboot your system.
-...
-...</pre>
-</div>
+<p>FIXME: Change the links in the above lines to the link for appropriate audience specific LMS where learner can provide completion code. Remove this block if submitting completion is not applicable.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="section1.html">Break-fix activity</a></span>
-  <span class="next"><a href="section3.html">Check your work</a></span>
+  <span class="prev"><a href="section2.html">Break-fix Scenario</a></span>
+  <span class="next"><a href="../chapter2/index.html">Guided Solution</a></span>
 </nav>
 </article>
   </div>

@@ -61,7 +61,10 @@
     <a class="nav-link" href="../chapter1/section1.html">Break-fix activity</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter1/section2.html">Check your work</a>
+    <a class="nav-link" href="../chapter1/section2.html">Break-fix Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../chapter1/section3.html">Check your work</a>
   </li>
 </ul>
   </li>
@@ -173,6 +176,16 @@
 </li>
 <li>
 <p>Change the value of <code>manage_repos</code> in <code>/etc/rhsm/rhsm.conf</code> to <code>1</code> instead of <code>0</code>.</p>
+<div class="listingblock">
+<div class="title">Sample output:</div>
+<div class="content">
+<pre>[root@rhel81 ~]# cat /etc/rhsm/rhsm.conf | grep -i manage_repos
+manage_repos = 1</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run <code>subscription-manager refresh</code> command to refresh the repo data.</p>
 <div class="listingblock execute">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">subscription-manager refresh</code></pre>
@@ -381,7 +394,7 @@ Reports summary:
 </div>
 </li>
 <li>
-<p>Once the <code>leapp preupgrade</code> completes with <code>0</code> errors and <code>0</code> inhibitors , run the <code>leapp upgrade</code></p>
+<p>Once the <code>leapp preupgrade</code> completes with <code>0</code> errors and <code>0</code> inhibitors , run the <code>leapp upgrade</code>.</p>
 <div class="listingblock execute">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">leapp upgrade</code></pre>
@@ -430,6 +443,13 @@ A reboot is required to continue. Please reboot your system.
 </li>
 <li>
 <p>Once <code>leapp upgrade</code> is successful and it prompts for reboot; reboot the system and confirm that the server is now booted with RHEL 9 kernel.</p>
+<div class="listingblock">
+<div class="title">Sample output:</div>
+<div class="content">
+<pre>[root@rhel81 ~]# reboot
+Shared connection to rhel81 closed.</pre>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -437,10 +457,17 @@ A reboot is required to continue. Please reboot your system.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This will take FIXME time to reflect the changes.
+This will take 15-20 minutes to reflect the changes.
 </td>
 </tr>
 </table>
+</div>
+<div class="listingblock">
+<div class="title">Sample output:</div>
+<div class="content">
+<pre>[ec2-user@rhel81 ~]$ cat /etc/redhat-release
+Red Hat Enterprise Linux release 9.4 (Plow)</pre>
+</div>
 </div>
 </li>
 </ol>
