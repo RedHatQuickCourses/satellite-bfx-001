@@ -30,6 +30,14 @@ Repositories disabled by configuration.
 
 . Change the value of `manage_repos` in `/etc/rhsm/rhsm.conf` to `1` instead of `0`.
 +
+.Sample output:
+----
+[root@rhel81 ~]# cat /etc/rhsm/rhsm.conf | grep -i manage_repos
+manage_repos = 1
+----
+
+. Run `subscription-manager refresh` command to refresh the repo data.
++
 [source,bash,role=execute]
 ----
 subscription-manager refresh
@@ -72,8 +80,6 @@ Message: Unable to install RHEL 9 userspace packages.
 +
 image::baseos94.png[baseos94,100%,100%,link=self,window=_blank]
  Tip: click on the image to open in a new tab for better visibility
-
-
 
 . Perform the previous steps for `appstream` as well:
 .. Login to satellite web console.
@@ -150,7 +156,7 @@ Reports summary:
 ...
 ----
 
-. Once the `leapp preupgrade` completes with `0` errors and `0` inhibitors , run the `leapp upgrade`
+. Once the `leapp preupgrade` completes with `0` errors and `0` inhibitors , run the `leapp upgrade`.
 +
 [source,bash,role=execute]
 ----
@@ -195,5 +201,18 @@ A reboot is required to continue. Please reboot your system.
 
 . Once `leapp upgrade` is successful and it prompts for reboot; reboot the system and confirm that the server is now booted with RHEL 9 kernel.
 +
+.Sample output:
+----
+[root@rhel81 ~]# reboot
+Shared connection to rhel81 closed.
+----
++
 [NOTE]
-This will take FIXME time to reflect the changes.
+This will take 15-20 minutes to reflect the changes.
++
+.Sample output:
+----
+[ec2-user@rhel81 ~]$ cat /etc/redhat-release
+Red Hat Enterprise Linux release 9.4 (Plow)
+----
+

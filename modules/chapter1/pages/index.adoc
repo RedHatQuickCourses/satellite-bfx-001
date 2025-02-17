@@ -4,12 +4,13 @@
 
 **Type of issue:**
 
-A RHEL8 server [rhel81] is registered to the satellite server and needs to be upgraded to RHEL9 via Leapp. But errors in leapp preupgrade and leapp upgrade need to be resolved before a successful upgrade to RHEL9 .
+A RHEL 8 server `rhel81` is registered to the satellite server and needs to be upgraded to RHEL 9 via Leapp.
+But errors in `leapp preupgrade` and `leapp upgrade` need to be resolved before a successful upgrade to RHEL 9.
 
 **What you should already know:**
 
-- This training assumes that you are a Red Hat Certified System Administrator (RHCSA) or have equivalent experience administrating Red Hat Enterprise Linux 8 or 9. +
-- Administation of Red Hat Satellite 6.
+- A Red Hat Certified System Administrator (RHCSA) or have equivalent experience administrating Red Hat Enterprise Linux 8 or 9.
+- Administration of Red Hat Satellite 6.
 
 **How break-fix training works:**
 
