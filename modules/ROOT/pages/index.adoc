@@ -11,7 +11,7 @@
 === Break-fix Practice: Leapp Upgrade with Satellite 6
 
 *Description:*
-This break-fix training simulates some common problems faced while performing a leapp upgrade on a client registered with Satellite 6.
+This break-fix training simulates some common problems faced while performing a Leapp upgrade on a client registered with Satellite 6.
 You'll investigate and solve the problem in a hands-on lab environment to complete the training.
 
 NOTE: After ordering the lab run the lab preparation instruction only *ONCE*.
