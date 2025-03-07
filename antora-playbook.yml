@@ -1,6 +1,6 @@
 site:
   title: "Break-fix Practice: Leapp Upgrade with Satellite 6"
-  start_page: satellite-breakfix-1::index.adoc
+  start_page: satellite-bfx-001::index.adoc
 
 content:
   sources:
